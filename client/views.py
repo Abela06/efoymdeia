@@ -102,7 +102,7 @@ class VideoViewSet(viewsets.ModelViewSet):
         if category:
             video_list = Video.objects.filter(
                 Q(channel__channelCategory=category) & (
-                        Q(status='downloaded') | Q(channel__channelStatus='trusted'))).order_by('?')
+                        Q(status='downloaded') | Q(channel__channelStatus='trusted'))).order_by('-publishedAt')
             return video_list
         else:
             return Video.objects.all()
